@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171b31">
+  <title>Киноучёт — информационная система кинотеатра</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">К</span><span>Киноучёт<small>Информационная система</small></span></a>
+      <nav class="nav" aria-label="Основная навигация">
+        <a href="#movies">Фильмы</a><a href="#sessions">Сеансы</a><a href="#report">Отчёт по жанрам</a><a href="#halls">Залы</a><a href="#sales">Продажи</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-inner">
+        <div><p class="eyebrow"><span></span> База данных кинотеатра</p><h1>Всё о киносеансах<br><em>в одном месте.</em></h1><p class="hero-copy">Фильмы, расписание и продажи билетов. Выберите жанр, чтобы сформировать отчёт по каталогу.</p><a class="button button-light" href="#movies">Смотреть фильмы <span aria-hidden="true">↗</span></a></div>
+        <div class="hero-art" aria-hidden="true"><div class="film-frame"><span>КИНО</span><b>01</b><i>СЕАНС НАЧИНАЕТСЯ</i></div><div class="film-caption">КАТАЛОГ · СЕАНСЫ · БИЛЕТЫ</div></div>
+      </div>
+    </section>
+    <div class="container main-content">
+      <div id="error" class="alert" role="alert" hidden></div>
+      <div class="overview" aria-label="Сведения о базе">
+        <div><span>В каталоге</span><strong id="movie-count">—</strong><small>фильмов</small></div>
+        <div><span>Направления</span><strong id="genre-count">—</strong><small>жанров</small></div>
+        <div><span>Кинотеатр</span><strong id="hall-count">—</strong><small>залов</small></div>
+        <div class="overview-note">Актуальные сведения<br>из базы данных MySQL <span aria-hidden="true">↗</span></div>
+      </div>
+
+      <section id="movies" class="section">
+        <div class="section-heading"><div><p class="section-label">01 / КАТАЛОГ</p><h2>Список фильмов</h2><p>Все фильмы, представленные в базе кинотеатра.</p></div><span class="section-aside" id="movie-total"></span></div>
+        <div class="movie-grid" id="movie-list"><p class="loading">Загружаем фильмы…</p></div>
+      </section>
+
+      <section id="sessions" class="section">
+        <div class="section-heading"><div><p class="section-label">02 / РАСПИСАНИЕ</p><h2>Киносеансы</h2><p>Время показа, зал и количество проданных билетов.</p></div></div>
+        <div class="table-wrap"><table><thead><tr><th>Дата и время</th><th>Фильм</th><th>Зал</th><th>Цена</th><th>Продано</th></tr></thead><tbody id="session-list"><tr><td colspan="5" class="empty">Загружаем сеансы…</td></tr></tbody></table></div>
+      </section>
+
+      <section id="report" class="section report-section">
+        <div class="report-intro"><div><p class="section-label">03 / ОТЧЁТ</p><h2>Фильмы по жанрам</h2><p>Выберите жанр, чтобы увидеть фильмы, которые к нему относятся.</p></div><span class="report-icon" aria-hidden="true">↗</span></div>
+        <form class="report-controls" id="report-form"><label for="genre-select">Жанр фильма</label><div><select id="genre-select" required><option value="">Выберите жанр</option></select><button class="button" type="submit">Показать отчёт <span aria-hidden="true">→</span></button></div></form>
+        <div class="report-result" id="report-result" aria-live="polite"><p class="empty">Выберите жанр и нажмите «Показать отчёт».</p></div>
+      </section>
+
+      <section id="halls" class="section">
+        <div class="section-heading"><div><p class="section-label">04 / ПРОСТРАНСТВО</p><h2>Залы кинотеатра</h2><p>Вместимость каждого зала и расположение мест.</p></div></div>
+        <div class="hall-grid" id="hall-list"><p class="loading">Загружаем залы…</p></div>
+      </section>
+
+      <section id="sales" class="section">
+        <div class="section-heading"><div><p class="section-label">05 / БИЛЕТЫ</p><h2>Продажи билетов</h2><p>Зарегистрированные в базе продажи.</p></div></div>
+        <div class="table-wrap"><table><thead><tr><th>Дата продажи</th><th>Фильм и сеанс</th><th>Зал</th><th>Место</th><th>Цена</th></tr></thead><tbody id="sales-list"><tr><td colspan="5" class="empty">Загружаем продажи…</td></tr></tbody></table></div>
+      </section>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><span><b>Киноучёт</b> / Информационная система кинотеатра</span><a href="#top">Наверх ↑</a></div></footer>
+</body>
+</html>
